@@ -13,9 +13,9 @@ class MyLink extends Link {
     value = this.sanitize(value);
     node.setAttribute("href", value);
     if (value.startsWith("https://") || value.startsWith("http://")) {
-        //external link
+      //external link
     } else {
-        // internal link
+      // internal link
       node.removeAttribute("target");
     }
     return node;
@@ -28,11 +28,13 @@ class RichTextInput extends Component {
     const { input: { value }, toolbar } = this.props;
 
     this.quill = new Quill(this.divRef, {
-      modules: { toolbar },
-      theme: "snow",
-      clipboard: {
-        matchVisual: false,
+      modules: {
+        toolbar,
+        clipboard: {
+          matchVisual: false,
+        },
       },
+      theme: "snow",
     });
 
     this.quill.pasteHTML(value);
